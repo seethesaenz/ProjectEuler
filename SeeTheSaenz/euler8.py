@@ -18,7 +18,7 @@ def largestProduct():
     # while bigNum is an int that is not 0 considered True
     while bigNum:
         # defining smolNum to be the modulus of bigNum % 10000000000000 aka the last 13 digits
-        smolNum = bigNum % 10000000000000
+        smolNum = bigNum % pow(10, 13)
         # making smolNum to string so i can iter
         for i in str(smolNum):
             # multiplying each iter of smolNum by each iter lol
