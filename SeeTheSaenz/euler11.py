@@ -1,6 +1,9 @@
+# credits to Jim for helping me with the logic!
+# What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally)
+# in the 20×20 grid?
 import numpy as np
 
-
+#Given grid set as string
 def makeArray():
     bigString = "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 49 49 99 40 17 81 18 57 60 87 17 40 98 43 " \
                 "69 48 04 56 62 00 81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65 52 70 95 23 04 60 11 42 " \
@@ -14,11 +17,13 @@ def makeArray():
                 "20 72 03 46 33 67 46 55 12 32 63 93 53 69 04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36 " \
                 "20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16 20 73 35 29 78 31 90 01 74 31 49 71 48 86 " \
                 "81 16 23 57 05 54 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"
-
+    #split the string by whitespace and set all the strings to a list
     bigList = list(bigString.split())
+    #initialized numpy array 
     bigArray = np.arange(400).reshape(20, 20)
     smolList = []
     countx = 0
+    #this while loop is setting each value in the list and putting it into the array that was initialized
     while (bigList):
         county = 0
         for i in bigList[:20]:
@@ -29,21 +34,25 @@ def makeArray():
         countx += 1
         bigList = bigList[20:]
         smolList = []
+    #returns array
     return bigArray
 
 def findLargestProduct(bigArray):
     largestProduct = 0
     testingProduct = 1
+    #the for loops basically iter over the whole array
     for y in range(20):
         for x in range(20):
+            #this for loop starts at 0, 0 and moves down one each iter of z   bigArray[row, column] 
             for z in range(4):
                 if (x + z >= 20):
                     continue
+                # sets the product of 4 digits and then checks to see if it is bigger than largestProduct
                 testingProduct = testingProduct * bigArray[x + z, y]
             if testingProduct > largestProduct:
                 largestProduct = testingProduct
             testingProduct = 1
-
+            #this for loop starts at 0, 0 and moves to the right each iter of z   bigArray[row, column] 
             for z in range(4):
                 if (x+z >= 20):
                     continue
@@ -51,7 +60,7 @@ def findLargestProduct(bigArray):
             if testingProduct > largestProduct:
                 largestProduct = testingProduct
             testingProduct = 1
-
+            #this for loop starts at 0, 0 and moves to the right and down each iter of z   bigArray[row, column] 
             for z in range(4):
                 if (y + z >= 20) or (z + x >= 20):
                     continue
@@ -59,7 +68,7 @@ def findLargestProduct(bigArray):
             if testingProduct > largestProduct:
                 largestProduct = testingProduct
             testingProduct = 1
-
+            #this for loop starts at 0, 0 and moves down and to the left each iter of z   bigArray[row, column] 
             for z in range(4):
                 if (y + z >= 20) or (x - z < 0):
                     continue
