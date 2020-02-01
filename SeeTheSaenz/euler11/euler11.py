@@ -32,40 +32,41 @@ def makeArray():
     return bigArray
 
 def findLargestProduct(bigArray):
-    smolList = []
     largestProduct = 0
     testingProduct = 1
-    diag = 1
-    for i in range(20):
-        for x in range(17):
-            for y in range(4):
-                testingProduct = testingProduct*bigArray[y+x, i]
+    for y in range(20):
+        for x in range(20):
+            for z in range(4):
+                if (x + z >= 20):
+                    continue
+                testingProduct = testingProduct * bigArray[x + z, y]
             if testingProduct > largestProduct:
                 largestProduct = testingProduct
             testingProduct = 1
-            for y in range(4):
-                testingProduct = testingProduct*bigArray[i, y+x]
-            if testingProduct > largestProduct:
-                largestProduct = testingProduct
-            testingProduct = 1
-            for y in range(4):
-                if (i+diag == 20) or (y+x+diag == 20):
-                    break
-                testingProduct = testingProduct*bigArray[i+diag, y+x+diag]
-            if testingProduct > largestProduct:
-                largestProduct = testingProduct
-            testingProduct = 1
-            for y in range(4):
-                if (i-diag < 0) or (y+x-diag < 0):
-                    break
-                testingProduct = testingProduct*bigArray[i-diag, y+x-diag]
-            if testingProduct > largestProduct:
-                largestProduct = testingProduct
-            testingProduct = 1
-            print (largestProduct)
 
-            smolList = []
+            for z in range(4):
+                if (x+z >= 20):
+                    continue
+                testingProduct = testingProduct * bigArray[y, x + z]
+            if testingProduct > largestProduct:
+                largestProduct = testingProduct
+            testingProduct = 1
 
+            for z in range(4):
+                if (y + z >= 20) or (z + x >= 20):
+                    continue
+                testingProduct = testingProduct * bigArray[y + z, x + z]
+            if testingProduct > largestProduct:
+                largestProduct = testingProduct
+            testingProduct = 1
 
+            for z in range(4):
+                if (y + z >= 20) or (x - z < 0):
+                    continue
+                testingProduct = testingProduct * bigArray[y + z, x - z]
+            if testingProduct > largestProduct:
+                largestProduct = testingProduct
+            testingProduct = 1
+    print(largestProduct)
 
 findLargestProduct(makeArray())
