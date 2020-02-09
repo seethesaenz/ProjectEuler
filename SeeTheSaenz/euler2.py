@@ -1,4 +1,5 @@
-# By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+# By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the
+# even-valued terms.
 fibonacci = [1, 2]
 evenFibonacci = []
 x = 0
@@ -11,7 +12,8 @@ def fibbonacci(x):
         # adding on the next sequence and counting up after
         fibonacci.append(fibonacci[x] + fibonacci[x + 1])
         x = x + 1
-    # added this because the limit we set was exceeded so correct our list. there's probably a more elegent way but this works
+    # added this because the limit we set was exceeded so correct our list. there's probably a more elegent way but
+    # this works
     fibonacci.pop(-1)
     evenodd()
 
