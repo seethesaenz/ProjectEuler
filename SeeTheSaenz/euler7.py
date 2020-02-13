@@ -10,6 +10,6 @@ def sieve(limit):
                     if list1[k]:
                         list1[k] = False
     list2 = [i for i in list1 if list1[i]]
-    return list2[10000]
+    return list2
 
-print(sieve(1000000))
+print(sieve(1000))
