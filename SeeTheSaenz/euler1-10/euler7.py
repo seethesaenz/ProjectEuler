@@ -12,4 +12,4 @@ def sieve(limit):
     list2 = [i for i in list1 if list1[i]]
     return list2
 
-print(sieve(1000))
+print(sieve(1000000))

@@ -1,10 +1,11 @@
 from itertools import permutations
-def lexicoperms():
-
-    l = list(permutations(range(0, 4)))
-    l = str(l).replace('(', '[').replace(')',']')
-    l[0] = ' '
-    l[-1] = ' '
-    print(l)
-print(lexicoperms())
-    
+def lexicographicperm(n):
+    numba = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    perms = permutations(numba)
+    nums = []
+    for perm in perms:
+        num = int(''.join(perm))
+        nums.append(num)
+    nums = sorted(nums)
+    return nums[n-1]
+print(lexicographicperm(1000000))
