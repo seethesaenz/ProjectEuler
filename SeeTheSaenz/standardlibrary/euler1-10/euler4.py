@@ -24,6 +24,6 @@ def palindrome():
             x -= 1
         x = 1000
         y -= 1
-        print(biggestPalin)
+    return biggestPalin
 
-palindrome()
+print(palindrome())

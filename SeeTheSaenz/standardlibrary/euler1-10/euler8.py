@@ -15,6 +15,7 @@ def largestProduct():
     list1 = []
     variable = 1
     biggestValue = 0
+    num = 0
     # while bigNum is an int that is not 0 considered True
     while bigNum:
         # defining smolNum to be the modulus of bigNum % 10000000000000 aka the last 13 digits
@@ -26,11 +27,12 @@ def largestProduct():
         # comparing the the product of smolNum to biggestValue and replacing if bigger
         if variable > biggestValue:
             biggestValue = variable
+            num = smol
         # redefining variable to 1 after multiply and checking if bigger
         variable = 1
         # decreasing bigNum by one digit
         bigNum //= 10
-    print(biggestValue)
+    print(biggestValue, num)
 
 
 largestProduct()
