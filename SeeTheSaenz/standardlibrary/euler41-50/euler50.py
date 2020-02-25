@@ -28,6 +28,6 @@ def euler50():
                     longestconsecutive = consecutive
                     strip = primes[i:x]
             value = 0
-    return biggestsum
+    return biggestsum, longestconsecutive
 
 print(euler50())
